@@ -45,13 +45,13 @@ public class UserRegistrationTest {
 	@Test
 	public void givenLastname_WhenShort_ShouldReturnFalse(){
 		UserRegistration classUnderTest = new UserRegistration();
-		boolean result =classUnderTest.validate("Ma");
+		boolean result =classUnderTest.validatelastName("Ma");
 		Assert.assertEquals(false, result);
 	}
 	@Test
 	public void givenLastname_WhenSmall_ShouldReturnTrue(){
 		UserRegistration classUnderTest = new UserRegistration();
-		boolean result =classUnderTest.validate("anikesh");
+		boolean result =classUnderTest.validatelastName("anikesh");
 		Assert.assertEquals(false, result);
 	}
 	
@@ -77,19 +77,9 @@ public class UserRegistrationTest {
 		Assert.assertEquals(false, result);
 	}
 	
-	@Test
-	public void givenEmail_WhenProper_ShouldReturnTrue(){
-		UserRegistration classUnderTest = new UserRegistration();
-		boolean result =classUnderTest.checkEmailId("anikesh0725@gmail.com");
-		Assert.assertEquals(true, result);
-	}
+
 	
-	@Test
-	public void givenPassword_WhenProper_ShouldReturnTrue(){
-		UserRegistration classUnderTest = new UserRegistration();
-		boolean result =classUnderTest.passwordValid("Anikesh@123233");
-		Assert.assertEquals(true, result);
-	}
+	
 	
 	
 	

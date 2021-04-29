@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class UserRegistration {
 	  String validFirstNameFormat = "^[A-Z][a-z]{2,}";
 	  String validLastNameFormat = "^[A-Z][a-z]{2,}";
-	  String validEmailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,7}$";
+	  String validEmailRegex = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})";
 	  String validMobileNo = "^[0-9]{2}[ ][0-9]{10}$";
 	  String validPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$";
 	 boolean validate(String userInput )
@@ -63,19 +63,17 @@ public class UserRegistration {
 	 }
 	 
 	 
-	 boolean checkEmailId(String  userInput) {
+	 boolean checkEmailId(String userInput1) {
 			
-		  Pattern compile =Pattern.compile( validEmailRegex ); 
-			
-			Matcher match= compile.matcher(userInput);
+		  Pattern compile =Pattern.compile(validEmailRegex);   
+			Matcher match= compile.matcher(userInput1);
 			
 			Boolean result = match.matches();
-			
-			  if (result) {
-                  return true;
-
-          }else 
-		return false;
+			if(result) {
+			return true;}
+			else
+				return false;
+			  
 
 
   
@@ -89,14 +87,7 @@ public class UserRegistration {
 			Matcher match= compile.matcher(userInput);
 			
 			Boolean result = match.matches();
-			
-       
-               if (result) 
-					return true;
-				 else 
-					return false;
-
-				
+				return result;
 
 		}
 	 
