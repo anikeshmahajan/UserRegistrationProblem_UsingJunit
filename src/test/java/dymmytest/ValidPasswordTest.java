@@ -34,8 +34,15 @@ public class ValidPasswordTest
 	public void givenPasswordAsVar_ShouldReturnPerfectResult()
 	{
 		UserRegistration userRegistration= new UserRegistration();
-		boolean result = userRegistration.passwordValid(passwordTest);
-		Assert.assertEquals(expectedResultt, result);
+		boolean result;
+		try {
+			result = userRegistration.passwordValid(passwordTest);
+			Assert.assertEquals(expectedResultt, result);
+		} catch (InvalidPasswordException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
+		
 	}
 
 }

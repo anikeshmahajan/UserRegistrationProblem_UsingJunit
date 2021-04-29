@@ -47,8 +47,15 @@ public class EmailValidationTest {
 		public void givenEmailAsVar_ShouldReturnPerfectResult()
 		{
 			UserRegistration ur= new UserRegistration();
-			boolean result1 = ur.checkEmailId(emailTest);
-			Assert.assertEquals(expectedResultt,result1);
+			boolean result1;
+			try {
+				result1 = ur.checkEmailId(emailTest);
+				Assert.assertEquals(expectedResultt,result1);
+			} catch (InvalidEmailException e) {
+				// TODO Auto-generated catch block
+				e.getMessage();
+			}
+			
 		}
 
 }

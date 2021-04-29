@@ -9,8 +9,10 @@ public class UserRegistration {
 	  String validEmailRegex = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})";
 	  String validMobileNo = "^[0-9]{2}[ ][0-9]{10}$";
 	  String validPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$";
-	 boolean validate(String userInput )
+	 boolean validate(String userInput ) throws InvalidFirstNameException
 	 {
+		try {
+			
 		
 		Pattern compile =Pattern.compile( validFirstNameFormat  ); 
 		
@@ -23,12 +25,14 @@ public class UserRegistration {
 			
 		 
 		}else 
-			return false;
-			
+			throw new InvalidFirstNameException("Enter valid FirstName");
+		} catch (Exception e) {
+			throw new InvalidFirstNameException("Enter valid FirstName");
+		}
 	  }
-	 boolean validatelastName(String userInput )
+	 boolean validatelastName(String userInput ) throws InvalidLastNameException
 	 {
-	 	
+	 	try {
 	 	Pattern compile =Pattern.compile( validLastNameFormat  ); 
 	 	
 	 	Matcher match= compile.matcher(userInput);
@@ -37,59 +41,74 @@ public class UserRegistration {
 	 	if(result)
 	 	{
 			return true; 
+			 
 		}else 
-		{
-			return false;
-		}	
-	 	
+			throw new InvalidLastNameException("Enter valid LastName");
+		} catch (Exception e) {
+			throw new InvalidLastNameException("Enter valid LastName");
+		}
 	 	
 	 	
 	    }
 	 
-	 boolean checkMobileNo(String userInput) {
-         
+	 boolean checkMobileNo(String userInput)  throws InvalidMobileNoException{
+         try {
 		  Pattern compile =Pattern.compile( validMobileNo ); 
 			
 			Matcher match= compile.matcher(userInput);
 			
 			Boolean result = match.matches();
 			
-       
-               if (result) {
-                       return true;
-
-               }else 
-			return false;
+			if(result)
+		 	{
+				return true; 
+				 
+			}else 
+				throw new InvalidMobileNoException("Enter valid MobileNo");
+			} catch (Exception e) {
+				throw new InvalidMobileNoException("Enter valid MobileNo");
+			}
 	 }
 	 
 	 
-	 boolean checkEmailId(String userInput1) {
-			
+	 boolean checkEmailId(String userInput1) throws InvalidEmailException {
+			try {
 		  Pattern compile =Pattern.compile(validEmailRegex);   
 			Matcher match= compile.matcher(userInput1);
 			
 			Boolean result = match.matches();
-			if(result) {
-			return true;}
-			else
-				return false;
-			  
-
+			if(result)
+		 	{
+				return true; 
+				 
+			}else 
+				throw new InvalidEmailException("Enter valid Email");
+			} catch (Exception e) {
+				throw new InvalidEmailException("Enter valid Email");
+			}
 
   
 	 }
 	 
-	 boolean passwordValid(String userInput) {
+	 boolean passwordValid(String userInput)  throws InvalidPasswordException{
 			
-			
+			try {
 		   Pattern compile =Pattern.compile( validPassword ); 
 			
 			Matcher match= compile.matcher(userInput);
 			
 			Boolean result = match.matches();
-				return result;
-
-		}
+			if(result)
+		 	{
+				return true; 
+				 
+			}else 
+				throw new InvalidPasswordException("Enter valid Password");
+			} catch (Exception e) {
+				throw new InvalidPasswordException("Enter valid Password");
+			}
+		
 	 
+}
 }
 
